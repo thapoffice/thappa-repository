@@ -1,0 +1,4 @@
+# variables go to here
+hostname: "{{ clusterIP }}"
+username: "{{ lookup('env','ANSIBLE_NET_USERNAME') }}"
+password: "{{ lookup('env','ANSIBLE_NET_PASSWORD') }}"

@@ -1,0 +1,9 @@
+- name: Creates OS image snapshot
+  hosts: all
+  connection: local
+  run_once: true
+  gather_facts: no
+  vars:
+    ansible_python_interpreter: /var/lib/awx/venv/python3-ansible2.9/bin/python
+  roles:
+  - role: storageListOsImageSnapshot
