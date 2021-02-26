@@ -276,28 +276,3 @@ anDatacenters:
     network_spectrum2: 10.210.1.12
     enableSSHConsoleAccess: false
     provisioning_api_url: https://api.bm4gcp.agea.atos.net
-
-    vir2:
-    gcpRegion: us-east4
-    gcpRegionCode: usea4
-    dnsServers: ["10.11.132.2", "10.11.129.5"]
-    ntpServers: ["time.bm4gcp.agea.atos.net"]
-    proxyServer: "proxy"
-    proxyPort: 3128
-    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
-    dhcpServers: ["10.212.1.1", "10.212.1.2"]
-    createEverestPerfTestQoS: false
-    createEverestDefaultQoS: true
-    createLambDefaultQoS: true
-    qosPrefix: 7200peakIOPSPerTB
-    hanaqosPrefix: SAPHana_48TB_Block
-    sendAuditlog: true
-    network_loc: '"VIR Collocation"'
-    network_range: 10.212.0.0/21
-    network_syslog: 10.212.1.14
-    network_ntp: 10.11.129.8
-    network_proxy: 10.11.129.8
-    network_spectrum1: 10.212.1.11
-    network_spectrum2: 10.212.1.12
-    enableSSHConsoleAccess: false
-    provisioning_api_url: https://api.bm4gcp.agea.atos.net

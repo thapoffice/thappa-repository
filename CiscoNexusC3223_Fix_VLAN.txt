@@ -1,0 +1,13 @@
+vrf context management
+no ip route 0.0.0.0/0 10.205.2.254
+ip route 0.0.0.0/0 10.205.2.126
+end
+
+
+vrf context management
+no ip route 0.0.0.0/0 10.204.2.254
+ip route 0.0.0.0/0 10.204.2.126
+end
+
+
+at-2887209-svr003
