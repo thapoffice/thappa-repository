@@ -1,0 +1,278 @@
+DHCPserverIndex: 0
+anTestCustomerJumphost: 10.156.0.8
+anTestCustomerJumphostServiceAccount: sa_102202955208323711472
+anDatacenters:
+  dev:
+    gcpRegion: europe-west3
+    gcpRegionCode: euwe3
+    dnsServers: ["10.11.130.2"]
+    ntpServers: ["time.dev-bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.dev-bm4gcp.agea.atos.net", "10.11.128.*"]
+    dhcpServers: ["10.200.1.1", "10.200.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"Development-Unit0 FRA3 E-Shelter"'
+    network_range: 10.200.0.0/21
+    network_syslog: 10.200.1.14
+    network_ntp: 10.11.128.8
+    network_proxy: 10.11.128.8
+    network_spectrum1: 10.200.1.11
+    network_spectrum2: 10.200.1.12
+    enableSSHConsoleAccess: true
+    provisioning_api_url: https://bm4gcp-provisioning-api-dev-cr-kummwvr3ja-uc.a.run.app
+
+  fra:
+    gcpRegion: europe-west3
+    gcpRegionCode: euwe3
+    dnsServers: ["10.11.130.131", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.201.1.1", "10.201.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"FRA Collocation"'
+    network_range: 10.201.0.0/21
+    network_syslog: 10.201.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.201.1.11
+    network_spectrum2: 10.201.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  lon:
+    gcpRegion: europe-west2
+    gcpRegionCode: euwe2
+    dnsServers: ["10.11.131.5", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.202.1.1","10.202.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"LON Collocation"'
+    network_range: 10.202.0.0/21
+    network_syslog: 10.202.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.202.1.11
+    network_spectrum2: 10.202.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  ned:
+    gcpRegion: europe-west4
+    gcpRegionCode: euwe4
+    dnsServers: ["10.11.131.130", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.203.1.1","10.203.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"NED Collocation"'
+    network_range: 10.203.0.0/21
+    network_syslog: 10.203.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.203.1.11
+    network_spectrum2: 10.203.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  vir:
+    gcpRegion: us-east4
+    gcpRegionCode: usea4
+    dnsServers: ["10.11.132.2", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.204.1.1", "10.204.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"VIR Collocation"'
+    network_range: 10.204.0.0/21
+    network_syslog: 10.204.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.204.1.11
+    network_spectrum2: 10.204.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  ang:
+    gcpRegion: us-west2
+    gcpRegionCode: uswe2
+    dnsServers: ["10.11.132.130", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.205.1.1","10.205.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"LA Collocation"'
+    network_range: 10.205.0.0/21
+    network_syslog: 10.205.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.205.1.11
+    network_spectrum2: 10.205.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  tok:
+    gcpRegion: asia-northeast1
+    gcpRegionCode: asne1
+    dnsServers: ["10.11.133.2", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.206.1.1","10.206.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"TOK Collocation"'
+    network_range: 10.206.0.0/21
+    network_syslog: 10.206.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.206.1.11
+    network_spectrum2: 10.206.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  sgp:
+    gcpRegion: asia-southeast1
+    gcpRegionCode: asse1
+    dnsServers: ["10.11.133.130", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.207.1.1","10.207.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"SGP Collocation"'
+    network_range: 10.207.0.0/21
+    network_syslog: 10.207.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.207.1.11
+    network_spectrum2: 10.207.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  syd:
+    gcpRegion: australia-southeast1
+    gcpRegionCode: ause1
+    dnsServers: ["10.11.134.2", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.208.1.1","10.208.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"SYD Collocation"'
+    network_range: 10.208.0.0/21
+    network_syslog: 10.208.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.208.1.11
+    network_spectrum2: 10.208.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  sao:
+    gcpRegion: southamerica-east1
+    gcpRegionCode: saea1
+    dnsServers: ["10.11.134.130", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.209.1.1","10.209.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"SAO Collocation"'
+    network_range: 10.209.0.0/21
+    network_syslog: 10.209.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.209.1.11
+    network_spectrum2: 10.209.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
+
+  mon:
+    gcpRegion: northamerica-northeast1
+    gcpRegionCode: nane1
+    dnsServers: ["10.11.140.2", "10.11.129.5"]
+    ntpServers: ["time.bm4gcp.agea.atos.net"]
+    proxyServer: "proxy"
+    proxyPort: 3128
+    proxyExclusions: ["*.bm4gcp.agea.atos.net", "10.11.129.*"]
+    dhcpServers: ["10.210.1.1","10.210.1.2"]
+    createEverestPerfTestQoS: false
+    createEverestDefaultQoS: true
+    createLambDefaultQoS: true
+    qosPrefix: 7200peakIOPSPerTB
+    hanaqosPrefix: SAPHana_48TB_Block
+    sendAuditlog: true
+    network_loc: '"MON Collocation"'
+    network_range: 10.210.0.0/21
+    network_syslog: 10.210.1.14
+    network_ntp: 10.11.129.8
+    network_proxy: 10.11.129.8
+    network_spectrum1: 10.210.1.11
+    network_spectrum2: 10.210.1.12
+    enableSSHConsoleAccess: false
+    provisioning_api_url: https://api.bm4gcp.agea.atos.net
