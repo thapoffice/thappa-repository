@@ -45,10 +45,10 @@ for netappcluster in netappclusters:
                 else:
                     workorder = ""
                 account = [x for x in accounts if x._id == sv.accountId][0].accountId
-                d = { "Name" : sv.name, "Status" : sv.status, "SizeGB" : sv.sizeGb, "ReservedSizeGB" : sv.reservedSizeGb, "Workorder" : workorder, "accountID" : account }
+                d = { "Name" : sv.name, "Status" : sv.status, "SizeGB" : sv.dataSize, "ReservedSizeGB" : sv.requestedSize, "Workorder" : workorder, "accountID" : account }
                 data.append(d)
-                totalAllocated = totalAllocated + sv.sizeGb
-                totalReserved = totalReserved + sv.reservedSizeGb
+                totalAllocated = totalAllocated + sv.dataSize
+                totalReserved = totalReserved + sv.requestedSize
 
             print("\t" + tabulate(data, headers="keys").replace("\n", "\n\t"))
 
