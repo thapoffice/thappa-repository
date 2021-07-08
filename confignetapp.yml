@@ -1,0 +1,138 @@
+# Gather NetApp info
+- name: Get NetApp info (Password Authentication)
+  na_ontap_info:
+    state: info
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: yes
+    validate_certs: no
+  register: netappFacts
+  delegate_to: localhost
+# Disable IPv6
+- name: Disable IPv6
+  na_ontap_command:
+    command: ['network options ipv6 modify -enabled false']
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: true
+    validate_certs: no
+  delegate_to: localhost
+
+
+# Create firewall policies - dns, ntp, http, snmp
+- name: Create firewall policy - dns
+  na_ontap_firewall_policy:
+    state: present
+    allow_list: "{{ all_IPs }}"
+    policy: secure_mgmt
+    service: dns
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: yes
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create firewall policy - ntp
+  na_ontap_firewall_policy:
+    state: present
+    allow_list: "{{ gcp_IPs }}"
+    policy: secure_mgmt
+    service: ntp
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: yes
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create firewall policy - snmp
+  na_ontap_firewall_policy:
+    state: present
+    allow_list: "{{ datacenter_IPs }}"
+    policy: secure_mgmt
+    service: snmp
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: yes
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Create firewall policy - http deny
+  na_ontap_firewall_policy:
+    state: present
+    allow_list: "127.0.0.1/32"
+    policy: secure_mgmt
+    service: http
+    logging: enable
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"
+    https: yes
+    validate_certs: no
+  delegate_to: localhost
+
+# Create additional firewall policies - ndmp,rsh,telnet
+- name: Mgmt Firewall Policy NDMP Deny
+  na_ontap_command:
+    command: ['firewall policy create -vserver "{{clusterName}}" -policy secure_mgmt -service ndmp -allow-list 127.0.0.1/32']
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}" 
+    https: true
+    validate_certs: no
+  delegate_to: localhost
+- name: Mgmt Firewall Policy RSH Deny
+  na_ontap_command:
+    command: ['firewall policy create -vserver "{{clusterName}}" -policy secure_mgmt -service rsh -allow-list 127.0.0.1/32']
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}" 
+    https: true
+    validate_certs: no
+  delegate_to: localhost
+- name: Mgmt Firewall Policy TELNET Deny
+  na_ontap_command:
+    command: ['firewall policy create -vserver "{{clusterName}}" -policy secure_mgmt -service telnet -allow-list 127.0.0.1/32']
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}" 
+    https: true
+    validate_certs: no
+  delegate_to: localhost
+
+# Enable firewall policies on the management interfaces
+- name: Enable firewall policy on the cluster management interface
+  na_ontap_interface:
+    state: present
+    interface_name: "lif_{{clusterName}}_mgmt"
+    firewall_policy: secure_mgmt
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"   
+    https: yes
+    validate_certs: no
+  delegate_to: localhost
+
+- name: Enable firewall policy on node management interfaces
+  na_ontap_interface:
+    state: present
+    interface_name: "lif_{{item}}_mgmt"
+    firewall_policy: secure_mgmt
+    vserver: "{{clusterName}}"
+    hostname: "{{clusterIP}}"
+    username: "{{username}}"
+    password: "{{password}}"   
+    https: yes
+    validate_certs: no
+  with_items: "{{netappFacts.ontap_info.cluster_node_info}}"
+  delegate_to: localhost
+
