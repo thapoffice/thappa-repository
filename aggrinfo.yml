@@ -1,0 +1,66 @@
+# Performs cluster-level configuration. Specifically, creates an aggregate
+# on each cluster node, and then creates a subnet.
+# 
+# Playbook inputs
+#
+#   Required:
+#
+#     credentials - path to file containing the cluster credentials
+#
+#   Optional:
+#
+#     Aggregate Creation, for task that uses the na_ontap_aggregate module:
+#       aggr_prefix - the aggregate name prefix, defaults to "aggr1"
+#       disk_count - the number of disks to include, defaults to 5
+#     Subnet Creation, for task that uses the na_ontap_net_subnet module:
+#       subnet_name - name of the ONTAP subnet, defaults to "Demo"
+#       subnet - subnet address/netmask, defaults to 192.168.0.0/24
+#       broadcast_domain - ONTAP broadcast domain name, defaults to "Default"
+#       ipspace - name of subnet's ipspace, defaults to "Default"
+#       gateway - ip address of the subnet gateway, defaults to 192.168.0.1
+#       ip_ranges - the list of IP ranges for the subnet, defaults to
+#                   [ '192.168.0.131-192.168.0.139' ]
+---
+- name: ===== Executing cluster_prep.yml playbook
+  hosts: localhost
+  gather_facts: false
+#  vars:
+#    credentials: cluster1.yml
+#- import_playbook: validate_ontap_credentials_file.yml
+
+# Cluster preparation play (create aggr & subnet)
+- name: Begin cluster post-creation configuration
+  hosts: localhost
+  collections:
+    - netapp.ontap
+  gather_facts: false
+  vars_files:
+    cluster1.yml
+#"{{ credentials }}"
+  vars:
+    # Setup YAML alias for supplying ONTAP credentials
+    ontap: &ontap
+      hostname: "{{ hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      https: "{{ https }}"
+      validate_certs: "{{ validate_certs }}"
+    aggr_prefix: aggr1
+    disk_count: 15
+    subnet_name: Demo
+    subnet: 192.168.0.0/24
+    broadcast_domain: Default
+    ipspace: Default
+    gateway: 192.168.0.1
+    ip_ranges: [ '192.168.0.131-192.168.0.139' ]
+  tasks:
+  - name: Limit Info Gathering to Aggregate Information as Cluster Admin
+    na_ontap_info:
+      hostname: "{{hostname}}"
+      username: "{{username}}"
+      password: "{{password}}"
+      https: true
+      validate_certs: no
+      summary: yes
+      gather_subset: "aggregate_info"
+    register: ontap_info
